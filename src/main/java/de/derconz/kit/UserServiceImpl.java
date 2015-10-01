@@ -23,6 +23,7 @@ public class UserServiceImpl {
 	 */
 	public static void main(String[] args) {
 		Logger logger = LogManager.getLogger(UserServiceImpl.class);
+		logger.trace("llalaa");
 		logger.trace("Trace");
 		logger.debug("Debug");
 		logger.info("Info");
