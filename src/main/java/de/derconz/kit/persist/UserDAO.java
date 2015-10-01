@@ -3,6 +3,8 @@ package de.derconz.kit.persist;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +19,17 @@ import de.derconz.kit.IUser;
  */
 public class UserDAO {
 	
-//	private EntityManagerFactory entityManagerFactory;
-//
-//    @PersistenceUnit
-//    public void setEntityManagerFactory(EntityManagerFactory emf) {
-//        this.entityManagerFactory = emf;
-//    }
+	private EntityManagerFactory entityManagerFactory;
+
+    @PersistenceUnit
+    public void setEntityManagerFactory(EntityManagerFactory emf) {
+        this.entityManagerFactory = emf;
+    }
 	
-	@Autowired
-	EntityManager em;
-	
-	public List<User> getUserList() {
-//		EntityManager em = entityManagerFactory.createEntityManager();
-		TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
-		List<User> userList = query.getResultList();
+	public List<IUser> getUserList() {
+		EntityManager em = entityManagerFactory.createEntityManager();
+		TypedQuery<IUser> query = em.createQuery("SELECT u FROM User u", IUser.class);
+		List<IUser> userList = query.getResultList();
 		em.close();
 		return userList;
 	}
