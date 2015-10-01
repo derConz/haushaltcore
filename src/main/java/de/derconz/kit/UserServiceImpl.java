@@ -7,6 +7,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import de.derconz.kit.persist.User;
 
 public class UserServiceImpl implements IUserService {
@@ -29,6 +32,12 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	public static void main(String[] args) {
-		
+		Logger logger = LogManager.getLogger(UserServiceImpl.class);
+		logger.trace("Trace");
+		logger.debug("Debug");
+		logger.info("Info");
+		logger.warn("Warning");
+		logger.error("Error");
+		logger.fatal("Fatal");
 	}
 }
