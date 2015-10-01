@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 
 import de.derconz.kit.persist.User;
@@ -12,10 +12,11 @@ import de.derconz.kit.persist.User;
 public class UserServiceImpl implements IUserService {
 
 	private EntityManagerFactory entityManagerFactory;
-	
-	public UserServiceImpl() {
-		entityManagerFactory = Persistence.createEntityManagerFactory("Haushalt");
-	}
+
+    @PersistenceUnit
+    public void setEntityManagerFactory(EntityManagerFactory emf) {
+        this.entityManagerFactory = emf;
+    }
 	
 	@Override
 	public List<User> getUserList() {
@@ -25,5 +26,9 @@ public class UserServiceImpl implements IUserService {
 		List<User> userList = query.getResultList();
 		em.close();
 		return userList;
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 }
