@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import de.derconz.kit.IUser;
+
 @Entity
 @Table(name="user")
-public class User {
+public class User implements IUser {
 
 	@Id
 	@Column(name="user_id")
